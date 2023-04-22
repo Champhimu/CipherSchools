@@ -33,8 +33,6 @@ const LogReg = () => {
         backgroundPosition: 'center',
         display: { xs: 'none', sm: 'block' },
         maxWidth: '100%',
-        height: '100%',
-        
       }}>
       </Grid>
       <Grid item lg={5} sm={7} xs={12}>
