@@ -26,7 +26,7 @@ const LogReg = () => {
 
   return (
     <>
-    <Grid container sx={{ height: '90vh' }}>
+    <Grid container sx={{ height: '95vh' }}>
       <Grid item lg={7} sm={5} sx={{
         backgroundImage: `url(${authentication})`,
         backgroundRepeat: 'no-repeat',
@@ -37,7 +37,7 @@ const LogReg = () => {
       </Grid>
       <Grid item lg={5} sm={7} xs={12}>
         <Card sx={{ width: '100%', height: '100%' }}>
-          <Box sx={{ mx: 3, height: 530 }}>
+          <Box sx={{ mx: 3, height: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <Tabs value={value} textColor='#503118' onChange={handleChange}>
                 <Tab label='Login' sx={{ textTransform: 'none', fontWeight: 'bold' }}></Tab>
