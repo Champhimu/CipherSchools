@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;  /* allows us to include the padding and border in an element's total width and height */
+  font-family: 'Source Sans Pro',sans-serif;
 }
 
