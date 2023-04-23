@@ -89,27 +89,27 @@ const ProfileComp = () => {
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><LinkedInIcon/>Linkedin</h6>
-                    <span class="text-secondary">himanshu</span>
+                    <span class="text-secondary">{userData.name}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><GitHubIcon /> Github</h6>
-                    <span class="text-secondary">himanshu</span>
+                    <span class="text-secondary">{userData.name}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><FacebookIcon />Facebook</h6>
-                    <span class="text-secondary">himanshu</span>
+                    <span class="text-secondary">{userData.name}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><TwitterIcon /> Twitter</h6>
-                    <span class="text-secondary">@himanshu</span>
+                    <span class="text-secondary">@{userData.name}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><InstagramIcon />Instagram</h6>
-                    <span class="text-secondary">himanshu</span>
+                    <span class="text-secondary">{userData.name}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><LanguageIcon/> Website</h6>
-                    <span class="text-secondary">https://himanshu.com</span>
+                    <span class="text-secondary">https://{userData.name}.com</span>
                   </li>
                 </ul>
               </div>
@@ -241,17 +241,17 @@ const ProfileComp = () => {
                       <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                       <label for="formGroupExampleInput" class="form-label">Highest education</label>
                       <select class="form-select" aria-label="Default select example">
-                        <option selected>Select Highest education</option>
+                        <option >Select Highest education</option>
                         <option value="1">Primary</option>
                         <option value="2">Secondary</option>
-                        <option value="3">Graduation</option>
+                        <option selected value="3">Graduation</option>
                         <option value="3">Post Graduation</option>
                       </select>
                       <label for="formGroupExampleInput" class="form-label mt-2">What do you do currently</label>
                       <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
+                        <option >Open this select menu</option>
                         <option value="1">Schooling</option>
-                        <option value="2">College Students</option>
+                        <option selected value="2">College Students</option>
                         <option value="3">Teaching</option>
                         <option value="4">Job</option>
                         <option value="5">Freelancing</option>

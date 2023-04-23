@@ -94,7 +94,7 @@ const Register = () => {
                 showModalAlert("Registration Sucessfull");
                 console.log("Registration Sucessfull");
                 sessionStorage.setItem('loggedin','true')
-                navigate('/verify');
+                navigate('/');
             }
         } catch (error) {
             console.log(error);
