@@ -4,7 +4,6 @@ import { showModalAlert, showSimpleAlert } from './AlertMsg';
 import { useFormik } from 'formik';
 import validator from 'validator';
 import { NavLink, useNavigate } from 'react-router-dom'
-// import appdata, { userInfo } from '../utility/appdata';
 import { OTPSchema } from '../schemas/OTPSchema';
 
 
@@ -70,19 +69,6 @@ const ForgotPass = () => {
             showModalAlert("Invalid Email");
         }
     }
-
-    // const runTimer= (timeGap,timeLimit)=>{
-    //     if(timeLimit-timeGap>0){
-    //         const timer = setInterval(()=>{
-    //             console.log(timeGap++);
-    //             setMsgSendDetails({...msgSendDetails,remainingTime:(60-timeGap)})
-    //             if(timeGap>=timeLimit){
-    //                 clearInterval(timer);
-
-    //             }
-    //         },1000);
-    //     }
-    // };
 
     return (
         <>
