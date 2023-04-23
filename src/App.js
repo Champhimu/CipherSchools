@@ -5,7 +5,6 @@ import Home from './components/Home'
 import Contactus from './components/Contactus'
 import Login from './components/Login';
 import Register from './components/Register';
-import Profile from './components/Profile';
 import {Routes, Route} from "react-router-dom";
 import ErrorPage from './components/ErrorPage';
 import BackPage from './components/BackPage';

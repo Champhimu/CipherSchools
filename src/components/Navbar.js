@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import appdata from '../utility/appdata'
 import Cookies from 'js-cookie'
 import { loadAlerts, setModalBtnClick, showModalAlert, showSimpleAlert } from './AlertMsg';
-import { loadSpinner, startSpinner, stopSpinner } from './Spinner';
+import { loadSpinner, stopSpinner } from './Spinner';
 import { logoutUser } from '../utility/user'
 
 const initTab = { login: 'Login', register: 'Register' };
@@ -58,7 +58,7 @@ const Navbar = () => {
     const signoutUser = () => {
         // console.log('Signing out user');
         setModalBtnClick(() => {
-            startSpinner();
+            // startSpinner();
             logoutUser(appdata).then(() => {
                 navigate('/login');
             }).finally(() => {
@@ -110,7 +110,7 @@ const Navbar = () => {
                     <NavLink className="nav-link fs-5" to="/user/followers">Followers</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link fs-5" to="/profile">Profile1</NavLink>
+                    <NavLink className="nav-link fs-5" to="/profile">Profile</NavLink>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link cursor-pointer fs-5" onClick={signoutUser} >Logout</Link>
