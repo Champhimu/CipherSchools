@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Footer = () => {
+const Foolowing = () => {
   return (
     <div>
-      Footer
+      Follow
     </div>
   )
 }
 
-export default Footer
+export default Foolowing
