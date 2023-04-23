@@ -13,6 +13,7 @@ import AlertMsg from './components/AlertMsg';
 import VerificationPage from './components/VerificationPage';
 import ForgotPass from './components/ForgotPass';
 import Foolowing from './components/Foolowing';
+import ProfileComp from './components/ProfileComp'
 
 export const userContext = createContext();
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <Route path="/contact" element={<BackPage Element= {Contactus}/>} />
         <Route path="/login" element={<BackPage Element= {Login}/>} />
         <Route path="/register" element={<BackPage Element= {Register}/>} />
-        <Route path="/profile" element={<BackPage Element= {Profile}/>} />
+        <Route path="/profile" element={<ProfileComp />} />
         <Route path='/user/followers' element={<Foolowing />} />
         <Route path="/forgotPassword" element={<BackPage Element= {ForgotPass}/>} />
         <Route path="/verify" element={<BackPage Element= {VerificationPage}/>} />

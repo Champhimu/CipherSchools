@@ -110,7 +110,7 @@ const Navbar = () => {
                     <NavLink className="nav-link fs-5" to="/user/followers">Followers</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link fs-5" to="/profile">Profile</NavLink>
+                    <NavLink className="nav-link fs-5" to="/profile">Profile1</NavLink>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link cursor-pointer fs-5" onClick={signoutUser} >Logout</Link>
