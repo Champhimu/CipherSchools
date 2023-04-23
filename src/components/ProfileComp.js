@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -8,9 +8,53 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LanguageIcon from '@mui/icons-material/Language';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import Avatar from '../images/avatar3.png'
+import appdata, {userInfo} from '../utility/appdata'
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileComp = () => {
 
+  const [userData, setUserData] = useState(userInfo);
+  const navigate = useNavigate();
+
+  const loadProfilePage = async () => {
+    try {
+      const res = await fetch(appdata.baseUrl+"/getdata", {
+          method: "POST",
+          headers: {
+              //send cookies
+              cookie:Cookies.get('jwtoken'),
+              "Content-Type": "application/json"
+          },
+          body:JSON.stringify({
+              cookie:Cookies.get('jwtoken')
+          })
+      });
+      // console.log(res);
+      if (res.status >= 201) {
+          throw new Error(res.error);
+      }
+      const data = await res.json();
+      // console.log(data);
+      Object.entries(data).forEach((e) => {if(userInfo[e[0]]!==undefined){userInfo[e[0]]= e[1]}});
+      // console.log(userInfo);
+      setUserData(data);
+  } catch (error) {
+      console.log(error);
+  }
+  }
+
+  useEffect(() => {
+    if(!sessionStorage.getItem('loggedin')){
+      navigate('/login');
+    }
+    if(!userInfo.creationdate ){
+      loadProfilePage();
+    }else{
+      setUserData(userInfo);
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <>
     <div class="container">
@@ -20,7 +64,7 @@ const ProfileComp = () => {
               <div class="card">
               <div class="position-relative mb-2">
                 {/* <div className='card-title fs-5 ms-3 mt-2 '>ON THE WEB</div> */}
-                <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2'>Edit</button>
+                <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                 </div>
                 {/* <button type="button" class="btn-sm btn btn-info">Primary</button>     */}
                 <div class="card-body">
@@ -28,8 +72,8 @@ const ProfileComp = () => {
                     <img src={Avatar} alt="Admin" class="rounded-circle" width="150" />
                     <div class="mt-3">
                       <p className='fs-5 mb-0'>Hello,</p>
-                      <h4>John Doe</h4>
-                      <p class="text-secondary mb-1">champhimu359@gmail.com</p>
+                      <h4>{userData.name}</h4>
+                      <p class="text-secondary mb-1">{userData.email}</p>
                       {/* <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> */}
                       {/* <button class="btn btn-primary">Follow</button> */}
                       {/* <button class="btn btn-outline-primary">Message</button> */}
@@ -40,7 +84,7 @@ const ProfileComp = () => {
               <div class="card mt-3">
                 <div class="position-relative mb-2">
                 <div className='card-title fs-5 ms-3 mt-2 '>ON THE WEB</div>
-                <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2'>Edit</button>
+                <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -194,7 +238,7 @@ const ProfileComp = () => {
                   <div class="card h-100">
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3">PROFESSIONAL INFORMATION</h6>
-                      <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2'>Edit</button>
+                      <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                       <label for="formGroupExampleInput" class="form-label">Highest education</label>
                       <select class="form-select" aria-label="Default select example">
                         <option selected>Select Highest education</option>
@@ -220,7 +264,7 @@ const ProfileComp = () => {
                   <div class="card h-100">
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3">PASSWORD & SECURITY</h6>
-                      <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2'>Edit</button>
+                      <button  type='button' className='btn btn-info position-absolute top-0 end-0 mt-2 me-2' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                       <div class="mb-3 row">
                         <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
                         <div class="col-sm-12">
@@ -249,24 +293,23 @@ const ProfileComp = () => {
         </div>
     </div>
 
-    {/* <div className='pf-user-box'>
-        <div className='pf-user-content'>
-            <div className='pf-user-profile-box'>
-                <img></img>
-                pencil
-                <div className='pf-user-details'>
-                    <div className='pf-user-detail-box'>
-                        <div className='left-side'>
-                            <h2>Hello</h2>
-                            Name
-                            Email
-                        </div>
-                        <div className='right-side'></div>
-                    </div>
-                </div>
-            </div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
         </div>
-    </div> */}
+      </div>
+    </div>
     </>
   )
 }

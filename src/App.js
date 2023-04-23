@@ -9,8 +9,6 @@ import {Routes, Route} from "react-router-dom";
 import ErrorPage from './components/ErrorPage';
 import BackPage from './components/BackPage';
 import AlertMsg from './components/AlertMsg';
-import VerificationPage from './components/VerificationPage';
-import ForgotPass from './components/ForgotPass';
 import Foolowing from './components/Foolowing';
 import ProfileComp from './components/ProfileComp'
 
@@ -28,8 +26,6 @@ function App() {
         <Route path="/register" element={<BackPage Element= {Register}/>} />
         <Route path="/profile" element={<ProfileComp />} />
         <Route path='/user/followers' element={<Foolowing />} />
-        <Route path="/forgotPassword" element={<BackPage Element= {ForgotPass}/>} />
-        <Route path="/verify" element={<BackPage Element= {VerificationPage}/>} />
         <Route path="/*" element={<ErrorPage/>} />
       </Routes>
     </>
